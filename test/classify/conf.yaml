@@ -1,0 +1,21 @@
+
+inference:
+  use: General
+  Animal:
+    model_path: "/home/ding/dmodels/classify/animal.pt"
+    device: 0
+    topk: 2
+    label_mapping_path: "label_mapping.txt"
+  General:
+    model_path: "/home/ding/dmodels/classify/general.pt"
+    device: 0
+    topk: 2
+    label_mapping_path: "meta_info.txt"
+  desc:
+    url: https://modelscope.cn/models/damo/cv_resnest101_animal_recognition/summary
+
+resnest101:
+  Animal:
+    num_classes: 8288
+  General:
+    num_classes: 54092
