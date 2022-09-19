@@ -1,3 +1,6 @@
+from typing import OrderedDict
+
+
 def load_wgts(net, state_dict, strict=True, show=True):
     """加载权重
 
@@ -16,6 +19,16 @@ def load_wgts(net, state_dict, strict=True, show=True):
     device = next(net.parameters()).device
     dst = net.state_dict()
     src = state_dict if 'state_dict' not in state_dict else state_dict['state_dict']
+
+    new_src = OrderedDict()
+    for k, v in src.items():
+        if 'module.' == k[0:7]:
+            name = k[7:]
+        else:
+            name = k
+        new_src[name] = v
+    src = new_src
+
     pretrained_dict = {}
     for k, v in dst.items():
         mk = k[7:]
@@ -31,21 +44,26 @@ def load_wgts(net, state_dict, strict=True, show=True):
     if len(pretrained_dict) == len(dst):
         print("%s : All parameters loading." % type(net).__name__)
     else:
-        if strict:
-            raise ValueError("Strict Parameter load failed")
-
         nkey = 0
         not_loaded_keys = []
         for k in dst.keys():
             if k not in pretrained_dict.keys():
                 not_loaded_keys.append(k)
+                print("dst:", k, dst[k].size())
             else:
                 nkey += 1
-
+        for k in src.keys():
+            if k not in pretrained_dict.keys():
+                print("src:", k, src[k].size())
+        
         if show:
-            print('%s: Some params were not loaded:' % type(net).__name__)
-            #print(('%s, ' * (len(not_loaded_keys) - 1) + '%s') % tuple(not_loaded_keys))
+            print('%s: Some params were not loaded.' % type(net).__name__)
+            print(('%s, ' * (len(not_loaded_keys) - 1) + '%s') % tuple(not_loaded_keys))
             print("load %d keys of %d" % (len(pretrained_dict), len(src)))
+
+        if strict:
+            raise ValueError("Strict Parameter load failed")
+
         if nkey == 0:
             return None 
 

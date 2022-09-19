@@ -1,0 +1,51 @@
+
+Wukong:
+  common:
+    use: 
+      conf: "ViT-B"
+      vision: "VisionTransformer"
+      text: "TextTransformer"
+    embed_dim: 256
+    is_token_wise: true
+    model_path: "./vit_b.pth"
+    init_scale: 1.0
+    input_resolution: &input_resolution 224
+    context_len: &context_len 32
+    device: 0
+  classify:
+    topk: 3
+    name_dict_path: ~
+    prompts_path: ~
+  desc:
+    url: https://wukong-dataset.github.io/wukong-dataset/
+
+VisionTransformer:
+  ViT-L:
+    input_resolution: *input_resolution
+    layers: 24
+    width: 1024
+    patch_size: 14
+    token_reduction: 
+      num_tokens: 24
+  ViT-B:
+    input_resolution: *input_resolution
+    layers: 12
+    width: 768
+    patch_size: 32
+    token_reduction: 
+      num_tokens: 12
+
+TextTransformer:
+  ViT-L:
+    context_length: *context_len
+    vocab_size: 21128
+    width: 768
+    heads: 12
+    layers: 12
+  ViT-B:
+    context_length: *context_len
+    vocab_size: 21128
+    width: 512
+    heads: 8
+    layers: 12
+  

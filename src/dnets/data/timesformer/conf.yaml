@@ -1,0 +1,111 @@
+Common:
+  base:
+    use: K400_8_224
+    num_classes: &num_classes 1000
+    model_path: &model_path ""
+  desc:
+    url: https://github.com/facebookresearch/TimeSformer.git
+
+TimeSformer:
+  K400_8_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 400
+    num_frames: 8
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
+  K400_16_448:
+    img_size: 448
+    patch_size: 16
+    num_classes: 400
+    num_frames: 16
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
+  K400_96_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 400
+    num_frames: 96
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path 
+  
+  K600_8_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 600
+    num_frames: 8
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path 
+  K600_16_448:
+    img_size: 448
+    patch_size: 16
+    num_classes: 600
+    num_frames: 16
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
+  K600_96_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 600
+    num_frames: 96
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path 
+
+   SSv2_8_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 174
+    num_frames: 8
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path 
+
+  SSv2_8_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 174
+    num_frames: 8
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path  
+  SSv2_16_448:
+    img_size: 448
+    patch_size: 16
+    num_classes: 174
+    num_frames: 16
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
+  SSv2_96_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 174
+    num_frames: 96
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path 
+     
+  HT100_8_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 1059
+    num_frames: 8
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
+  HT100_16_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 1059
+    num_frames: 16
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
+  HT100_32_448:
+    img_size: 448
+    patch_size: 16
+    num_classes: 1059
+    num_frames: 64
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
+  HT100_96_224:
+    img_size: 224
+    patch_size: 16
+    num_classes: 1059
+    num_frames: 96
+    attention_type: 'divided_space_time'
+    pretrained_model: *model_path
