@@ -91,7 +91,7 @@ class ACropDrop(object):
 
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     # net = ACropDrop()
     # x = torch.randn(5, 3, 5, 5)
     # a = torch.randn(5, 2, 5, 5)

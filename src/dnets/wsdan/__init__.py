@@ -1,1 +1,1 @@
-from .model import WSDAN, WSDREF
+from .model import WSDAN

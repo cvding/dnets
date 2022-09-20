@@ -9,7 +9,7 @@
 #from distutils.core import setup
 from setuptools import find_packages, setup
 
-setup(name='',  # 包名
+setup(name='dnets',  # 包名
       version='0.0.1',  # 版本号
       description='',
       long_description='',
